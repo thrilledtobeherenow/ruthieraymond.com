@@ -16,6 +16,9 @@ header {
 main {
     padding: 40px;
     flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
 
 footer {
