@@ -1,10 +1,11 @@
 body {
     margin: 0;
     padding: 0;
+
     background: white;
     color: black;
 
-    font-family: "Amador", serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 
@@ -14,40 +15,33 @@ header {
     padding: 35px 5vw 30px 5vw;
 
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-
-    position: relative;
 }
 
 
 /* NAME */
 
 .site-name {
-    font-size: 42px;
-
     color: black;
     text-decoration: none;
+
+    font-size: 32px;
 }
 
 
-/* INSTAGRAM + EMAIL */
+/* HEADER LINKS */
 
 .header-links {
-    position: absolute;
-    right: 5vw;
-
     display: flex;
     gap: 20px;
-
-    transform: translateX(-180px);
 }
 
 .header-links a {
     color: black;
     text-decoration: none;
 
-    font-size: 22px;
+    font-size: 18px;
 }
 
 
@@ -67,14 +61,14 @@ main {
 }
 
 
-/* INDIVIDUAL VIDEO */
+/* VIDEO ITEM */
 
 .video-item {
     width: 100%;
 }
 
 
-/* VIDEO PREVIEW */
+/* VIDEO PLACEHOLDER */
 
 .video-placeholder {
     width: 100%;
@@ -86,7 +80,7 @@ main {
     justify-content: center;
     align-items: center;
 
-    font-family: Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
 }
 
@@ -98,7 +92,7 @@ main {
 
     text-align: center;
 
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.1;
 }
 
@@ -110,11 +104,11 @@ main {
 }
 
 .about-page p {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 
-/* MOBILE */
+/* TABLET */
 
 @media (max-width: 800px) {
 
@@ -122,16 +116,10 @@ main {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .site-name {
-        font-size: 32px;
-    }
-
-    .header-links a {
-        font-size: 18px;
-    }
-
 }
 
+
+/* PHONE */
 
 @media (max-width: 500px) {
 
@@ -140,19 +128,11 @@ main {
     }
 
     header {
-        padding: 25px 5vw 25px 5vw;
+        padding: 25px 5vw;
     }
 
     .site-name {
-        font-size: 28px;
-    }
-
-    .header-links {
-        position: static;
-
-        transform: none;
-
-        margin-right: auto;
+        font-size: 26px;
     }
 
     .header-links a {
