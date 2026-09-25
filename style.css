@@ -1,10 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-
     background: white;
     color: black;
-
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -13,7 +11,6 @@ body {
 
 header {
     padding: 35px 5vw 30px 5vw;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +22,6 @@ header {
 .site-name {
     color: black;
     text-decoration: none;
-
     font-size: 32px;
 }
 
@@ -40,12 +36,11 @@ header {
 .header-links a {
     color: black;
     text-decoration: none;
-
     font-size: 18px;
 }
 
 
-/* VIDEO GRID */
+/* HOMEPAGE */
 
 main {
     padding: 0 5vw 50px 5vw;
@@ -53,35 +48,28 @@ main {
 
 .video-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     column-gap: 20px;
     row-gap: 35px;
 }
 
 
-/* VIDEO ITEM */
+/* VIDEO ITEMS */
 
 .video-item {
     width: 100%;
 }
 
 
-/* VIDEO PLACEHOLDER */
+/* HOMEPAGE VIDEO */
 
-.video-placeholder {
+.video-link {
+    display: block;
+}
+
+.home-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
-
-    background-color: #eeeeee;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    display: block;
 }
 
 
@@ -89,9 +77,7 @@ main {
 
 .video-item p {
     margin: 10px 0 0 0;
-
     text-align: center;
-
     font-size: 18px;
     line-height: 1.1;
 }
@@ -105,6 +91,37 @@ main {
 
 .about-page p {
     font-size: 18px;
+}
+
+
+/* INDIVIDUAL VIDEO PAGE */
+
+.video-page {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.single-video-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5vw;
+    box-sizing: border-box;
+}
+
+.single-video {
+    width: 80vw;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+.single-video-page p {
+    font-size: 24px;
+    margin-top: 15px;
 }
 
 
