@@ -41,7 +41,6 @@ main {
 .video-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    grid-auto-flow: row;
     gap: 30px 20px;
     align-items: start;
 }
@@ -54,6 +53,7 @@ main {
 }
 
 .video-item.featured {
+    grid-column: 1;
     grid-row: span 2;
 }
 
