@@ -1,3 +1,4 @@
+```css
 body {
     margin: 0;
     padding: 0;
@@ -6,27 +7,20 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-
 /* HEADER */
 
 header {
-    padding: 35px 5vw 30px 5vw;
+    padding: 35px 5vw 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-
-/* NAME */
 
 .site-name {
     color: black;
     text-decoration: none;
     font-size: 32px;
 }
-
-
-/* HEADER LINKS */
 
 .header-links {
     display: flex;
@@ -39,49 +33,52 @@ header {
     font-size: 18px;
 }
 
-
-/* HOMEPAGE */
+/* HOMEPAGE GRID */
 
 main {
-    padding: 0 5vw 50px 5vw;
+    padding: 0 5vw 50px;
 }
 
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 20px;
-    row-gap: 35px;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px 20px;
+    align-items: start;
 }
-
-
-/* VIDEO ITEMS */
 
 .video-item {
+    min-width: 0;
+    cursor: pointer;
+}
+
+.video-item.featured {
+    grid-column: span 1;
+}
+
+.home-video,
+.video-placeholder {
     width: 100%;
-}
-
-
-/* HOMEPAGE VIDEO */
-
-.video-link {
     display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
 }
 
-.home-video {
-    width: 100%;
-    display: block;
+.video-placeholder {
+    background: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: #555555;
+    font-size: 16px;
 }
-
-
-/* VIDEO DESCRIPTION */
 
 .video-item p {
-    margin: 10px 0 0 0;
+    margin: 10px 0 0;
     text-align: center;
     font-size: 18px;
-    line-height: 1.1;
+    line-height: 1.2;
 }
-
 
 /* ABOUT PAGE */
 
@@ -92,7 +89,6 @@ main {
 .about-page p {
     font-size: 18px;
 }
-
 
 /* INDIVIDUAL VIDEO PAGE */
 
@@ -124,26 +120,21 @@ main {
     margin-top: 15px;
 }
 
-
 /* TABLET */
 
 @media (max-width: 800px) {
-
     .video-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 2fr 1fr;
     }
 
+    .video-item.featured {
+        grid-column: span 1;
+    }
 }
-
 
 /* PHONE */
 
 @media (max-width: 500px) {
-
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-
     header {
         padding: 25px 5vw;
     }
@@ -156,4 +147,17 @@ main {
         font-size: 16px;
     }
 
+    .video-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 12px;
+    }
+
+    .video-item p {
+        font-size: 15px;
+    }
+
+    .single-video {
+        width: 90vw;
+    }
 }
+```
