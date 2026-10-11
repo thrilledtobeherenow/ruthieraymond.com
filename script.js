@@ -1,4 +1,3 @@
-```javascript
 const videoGrid = document.querySelector(".video-grid");
 
 if (videoGrid) {
@@ -21,4 +20,3 @@ if (videoGrid) {
         videoGrid.insertBefore(clickedVideo, videoGrid.firstElementChild);
     });
 }
-```
