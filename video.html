@@ -1,80 +1,125 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video</title>
+    <title>Video | Ruthie Raymond</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="video-page">
 
+    <header>
+        <a href="index.html" class="site-name">Ruthie Raymond</a>
+
+        <div class="header-links">
+            <a href="https://www.instagram.com/ruthie___raymond/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:thrilledtobeherenow@gmail.com">Email</a>
+        </div>
+    </header>
+
     <main class="single-video-page">
 
-        <iframe
-            id="external-video"
-            class="single-video"
-            src=""
-            title="Video player"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen>
-        </iframe>
+        <div id="video-player"></div>
 
         <p id="video-title"></p>
+
+        <p>
+            <a id="original-video-link" href="#" target="_blank" rel="noopener noreferrer">
+                Open original video
+            </a>
+        </p>
 
     </main>
 
     <script>
         const videos = {
             1: {
-                title: "Placeholder Name 1",
-                url: ""
+                title: "Lot People: Episode 2, The Seea (Commission), 2026",
+                url: "https://www.instagram.com/reel/DdRusyiPdwK/",
+                type: "instagram"
             },
             2: {
-                title: "Placeholder Name 2",
-                url: ""
+                title: "Lot People: Episode 1, The Seea (Commission), 2026",
+                url: "https://www.instagram.com/reel/DePcD5jCFZL/",
+                type: "instagram"
             },
             3: {
-                title: "Placeholder Name 3",
-                url: ""
+                title: "INTERCONTINENTAL NEOPRENE CANDY FLIP TEST (Featured), Fahrenheit Celcius, 2026",
+                url: "",
+                type: "none"
             },
             4: {
-                title: "Placeholder Name 4",
-                url: ""
+                title: "Roadrunner (Featured), Jake Richards & Lulu Erkeneff, 2026",
+                url: "https://www.youtube.com/watch?v=N5gTCtHXEiE",
+                type: "youtube"
             },
             5: {
-                title: "Placeholder Name 5",
-                url: ""
+                title: "Lot People: Episode 4, The Seea (Commission), 2025",
+                url: "https://www.instagram.com/reel/DQFJHSFCWI8/",
+                type: "instagram"
             },
             6: {
-                title: "Placeholder Name 6",
-                url: ""
+                title: "Lot People: Episode 3, The Seea (Commission), 2025",
+                url: "https://www.instagram.com/reel/DOq31ZaEhfv/",
+                type: "instagram"
             },
             7: {
-                title: "Placeholder Name 7",
-                url: ""
+                title: "Lot People: Episode 2, The Seea (Commission), 2025",
+                url: "https://www.instagram.com/reel/DN2dn_TinD8/",
+                type: "instagram"
             },
             8: {
-                title: "Placeholder Name 8",
-                url: ""
+                title: "Lot People: Episode 1, The Seea (Commission), 2025",
+                url: "https://www.instagram.com/reel/DMvVGt3CHwS/",
+                type: "instagram"
             }
         };
 
         const number = new URLSearchParams(window.location.search).get("video");
         const selectedVideo = videos[number];
 
+        const player = document.getElementById("video-player");
+        const title = document.getElementById("video-title");
+        const originalLink = document.getElementById("original-video-link");
+
         if (selectedVideo) {
-            document.title = selectedVideo.title;
-            document.getElementById("video-title").textContent = selectedVideo.title;
+            document.title = selectedVideo.title + " | Ruthie Raymond";
+            title.textContent = selectedVideo.title;
 
             if (selectedVideo.url) {
-                document.getElementById("external-video").src = selectedVideo.url;
+                originalLink.href = selectedVideo.url;
+
+                if (selectedVideo.type === "youtube") {
+                    const videoId = "N5gTCtHXEiE";
+                    const iframe = document.createElement("iframe");
+
+                    iframe.className = "single-video";
+                    iframe.src = "https://www.youtube.com/embed/" + videoId;
+                    iframe.title = selectedVideo.title;
+                    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+                    iframe.allowFullscreen = true;
+
+                    player.appendChild(iframe);
+                } else if (selectedVideo.type === "instagram") {
+                    const iframe = document.createElement("iframe");
+
+                    iframe.className = "single-video";
+                    iframe.src = selectedVideo.url + "embed/";
+                    iframe.title = selectedVideo.title;
+                    iframe.allowFullscreen = true;
+
+                    player.appendChild(iframe);
+                }
             } else {
-                document.getElementById("external-video").style.display = "none";
-                document.getElementById("video-title").textContent =
-                    selectedVideo.title + " — external video link not added yet.";
+                player.textContent = "Video link coming soon.";
+                originalLink.style.display = "none";
             }
+        } else {
+            title.textContent = "Video not found.";
+            originalLink.style.display = "none";
         }
     </script>
 
