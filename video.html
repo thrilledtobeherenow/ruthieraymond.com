@@ -127,9 +127,9 @@
             if (selectedVideo.url) {
                 originalLink.href = selectedVideo.url;
 
-                if (selectedVideo.type === "youtube") {
+            if (selectedVideo.type === "youtube") {
                     const iframe = document.createElement("iframe");
-                    const videoId = "N5gTCtHXEiE";
+                    const videoId = new URL(selectedVideo.url).searchParams.get("v");
 
                     iframe.className = "single-video";
                     iframe.src = "https://www.youtube.com/embed/" +
