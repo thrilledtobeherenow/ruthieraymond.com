@@ -1,78 +1,108 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video | Ruthie Raymond</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="video-page">
 
     <header>
         <a href="index.html" class="site-name">Ruthie Raymond</a>
-
-        <div class="header-links">
+        <nav class="header-links">
+            <a href="about.html">About</a>
             <a href="https://www.instagram.com/ruthie___raymond/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:thrilledtobeherenow@gmail.com">Email</a>
-        </div>
+        </nav>
     </header>
 
     <main class="single-video-page">
+        <div id="video-player" class="video-player"></div>
 
-        <div id="video-player"></div>
+        <div id="video-title" class="single-video-title"></div>
 
-        <p id="video-title"></p>
-
-        <p>
-            <a id="original-video-link" href="#" target="_blank" rel="noopener noreferrer">
-                Open original video
-            </a>
-        </p>
-
+        <a
+            id="original-video-link"
+            class="original-video-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+        >Open original video</a>
     </main>
 
     <script>
         const videos = {
             1: {
-                title: "Lot People: Episode 2, The Seea (Commission), 2026",
-                url: "https://www.instagram.com/reel/DdRusyiPdwK/",
-                type: "instagram"
-            },
-            2: {
-                title: "Lot People: Episode 1, The Seea (Commission), 2026",
+                lines: [
+                    "Lot People: Episode 1",
+                    "The Seea (Commission)",
+                    "2026"
+                ],
                 url: "https://www.instagram.com/reel/DePcD5jCFZL/",
                 type: "instagram"
             },
+            2: {
+                lines: [
+                    "Lot People: Episode 2",
+                    "The Seea (Commission)",
+                    "2026"
+                ],
+                url: "https://www.instagram.com/reel/DdRusyiPdwK/",
+                type: "instagram"
+            },
             3: {
-                title: "INTERCONTINENTAL NEOPRENE CANDY FLIP TEST (Featured), Fahrenheit Celcius, 2026",
+                lines: [
+                    "INTERCONTINENTAL NEOPRENE CANDY FLIP TEST",
+                    "Fahrenheit Celcius (Featured)",
+                    "2026"
+                ],
                 url: "",
                 type: "none"
             },
             4: {
-                title: "Roadrunner (Featured), Jake Richards & Lulu Erkeneff, 2026",
+                lines: [
+                    "Roadrunner (Featured)",
+                    "Jake Richards & Lulu Erkeneff",
+                    "2026"
+                ],
                 url: "https://www.youtube.com/watch?v=N5gTCtHXEiE",
                 type: "youtube"
             },
             5: {
-                title: "Lot People: Episode 4, The Seea (Commission), 2025",
+                lines: [
+                    "Lot People: Episode 4",
+                    "The Seea (Commission)",
+                    "2025"
+                ],
                 url: "https://www.instagram.com/reel/DQFJHSFCWI8/",
                 type: "instagram"
             },
             6: {
-                title: "Lot People: Episode 3, The Seea (Commission), 2025",
+                lines: [
+                    "Lot People: Episode 3",
+                    "The Seea (Commission)",
+                    "2025"
+                ],
                 url: "https://www.instagram.com/reel/DOq31ZaEhfv/",
                 type: "instagram"
             },
             7: {
-                title: "Lot People: Episode 2, The Seea (Commission), 2025",
+                lines: [
+                    "Lot People: Episode 2",
+                    "The Seea (Commission)",
+                    "2025"
+                ],
                 url: "https://www.instagram.com/reel/DN2dn_TinD8/",
                 type: "instagram"
             },
             8: {
-                title: "Lot People: Episode 1, The Seea (Commission), 2025",
+                lines: [
+                    "Lot People: Episode 1",
+                    "The Seea (Commission)",
+                    "2025"
+                ],
                 url: "https://www.instagram.com/reel/DMvVGt3CHwS/",
                 type: "instagram"
             }
@@ -86,20 +116,26 @@
         const originalLink = document.getElementById("original-video-link");
 
         if (selectedVideo) {
-            document.title = selectedVideo.title + " | Ruthie Raymond";
-            title.textContent = selectedVideo.title;
+            document.title = selectedVideo.lines[0] + " | Ruthie Raymond";
+
+            selectedVideo.lines.forEach(function(line) {
+                const span = document.createElement("span");
+                span.textContent = line;
+                title.appendChild(span);
+            });
 
             if (selectedVideo.url) {
                 originalLink.href = selectedVideo.url;
 
                 if (selectedVideo.type === "youtube") {
-                    const videoId = "N5gTCtHXEiE";
                     const iframe = document.createElement("iframe");
+                    const videoId = "N5gTCtHXEiE";
 
                     iframe.className = "single-video";
-                    iframe.src = "https://www.youtube.com/embed/" + videoId;
-                    iframe.title = selectedVideo.title;
-                    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+                    iframe.src = "https://www.youtube.com/embed/" +
+                        videoId + "?autoplay=1&mute=1&playsinline=1";
+                    iframe.title = selectedVideo.lines.join(" ");
+                    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
                     iframe.allowFullscreen = true;
 
                     player.appendChild(iframe);
@@ -108,7 +144,8 @@
 
                     iframe.className = "single-video";
                     iframe.src = selectedVideo.url + "embed/";
-                    iframe.title = selectedVideo.title;
+                    iframe.title = selectedVideo.lines.join(" ");
+                    iframe.allow = "autoplay; encrypted-media";
                     iframe.allowFullscreen = true;
 
                     player.appendChild(iframe);
