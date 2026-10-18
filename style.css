@@ -24,6 +24,7 @@ header {
 
 .header-links {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
@@ -46,14 +47,18 @@ main {
     align-items: start;
 }
 
-/* Place video 1 in the large left column */
+.video-item {
+    display: block;
+    min-width: 0;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+}
 
 .video-item.featured {
     grid-column: 1;
     grid-row: 1 / span 2;
 }
-
-/* Explicitly place every other video in a small cell */
 
 .video-item:nth-child(2) {
     grid-column: 2;
@@ -90,12 +95,13 @@ main {
     grid-row: 3;
 }
 
-.video-item {
-    display: block;
-    min-width: 0;
+.latest-label {
     width: 100%;
-    color: black;
-    text-decoration: none;
+    box-sizing: border-box;
+    text-align: right;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0 0 6px;
 }
 
 .home-video,
@@ -119,9 +125,13 @@ main {
 
 .video-item p {
     margin: 10px 0 0;
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.2;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+.video-item p span {
+    display: block;
 }
 
 /* ABOUT PAGE */
@@ -130,8 +140,32 @@ main {
     padding-top: 20px;
 }
 
-.about-page p {
-    font-size: 18px;
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    min-height: 55vh;
+}
+
+.about-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.about-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.about-copy p {
+    margin: 0 0 18px;
 }
 
 /* VIDEO PAGE */
@@ -151,21 +185,46 @@ main {
     box-sizing: border-box;
 }
 
+.video-player {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .single-video {
+    display: block;
     width: 80vw;
     max-width: 1200px;
     aspect-ratio: 16 / 9;
     border: none;
 }
 
-.single-video-page p {
-    font-size: 24px;
-    margin-top: 15px;
+.single-video-title {
+    width: 80vw;
+    max-width: 1200px;
+    margin: 15px 0 0;
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.single-video-title span {
+    display: block;
+}
+
+.original-video-link {
+    margin-top: 12px;
+    font-size: 15px;
+    color: black;
 }
 
 /* TABLET */
 
 @media (max-width: 800px) {
+    header {
+        gap: 20px;
+    }
+
     .video-grid {
         grid-template-columns: 2fr 1fr;
     }
@@ -179,6 +238,10 @@ main {
         grid-column: 1;
         grid-row: span 2;
     }
+
+    .about-layout {
+        gap: 25px;
+    }
 }
 
 /* PHONE */
@@ -186,10 +249,18 @@ main {
 @media (max-width: 500px) {
     header {
         padding: 25px 5vw;
+        align-items: flex-start;
+        gap: 15px;
     }
 
     .site-name {
         font-size: 26px;
+    }
+
+    .header-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 
     .header-links a {
@@ -201,16 +272,43 @@ main {
         gap: 25px 12px;
     }
 
+    .video-item:nth-child(n) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
     .video-item.featured {
         grid-column: 1;
         grid-row: span 2;
     }
 
+    .latest-label {
+        font-size: 18px;
+    }
+
     .video-item p {
-        font-size: 15px;
+        font-size: 14px;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .about-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .about-copy {
+        font-size: 18px;
     }
 
     .single-video {
         width: 90vw;
+    }
+
+    .single-video-title {
+        width: 90vw;
+        font-size: 16px;
     }
 }
