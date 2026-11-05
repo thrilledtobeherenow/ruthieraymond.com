@@ -10,21 +10,51 @@
 <body>
 
     <header>
-        <a href="about.html" class="site-name">Ruthie Raymond</a>
+        <a href="index.html" class="site-name">Ruthie Raymond</a>
+
         <nav class="header-links">
-            <a href="about.html">About</a>
             <a href="https://www.instagram.com/ruthie___raymond/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:thrilledtobeherenow@gmail.com">Email</a>
         </nav>
     </header>
 
-    <main>
-        <div class="video-grid">
+    <main class="homepage-layout">
 
-            <a href="video.html?video=1" class="video-item featured">
+        <!-- LEFT: STICKY FEATURED VIDEO AND ABOUT TEXT -->
+
+        <aside class="left-column">
+
+            <div class="featured-video">
                 <div class="latest-label">The Latest</div>
+
+                <a href="video.html?video=9" class="featured-link">
+                    <video class="featured-preview" autoplay muted loop playsinline>
+                        <source src="latest-preview.mp4" type="video/mp4">
+                    </video>
+                </a>
+
+                <a href="video.html?video=9" class="featured-title">
+                    <span>Lot People: Episode 3</span>
+                    <span>The Seea (Commission)</span>
+                    <span>2026</span>
+                </a>
+            </div>
+
+            <div class="about-callout">
+                <p>Ruthie Raymond is a video artist living in Venice, CA.</p>
+                <p>She is badly sunburnt and very happy.</p>
+                <p>Southern California is her home and muse.</p>
+            </div>
+
+        </aside>
+
+        <!-- RIGHT: SCROLLING VIDEO GRID -->
+
+        <section class="video-grid">
+
+            <a href="video.html?video=1" class="video-item">
                 <video class="home-video" autoplay muted loop playsinline>
-                    <source src="video2-preview.mp4" type="video/mp4">
+                    <source src="video1-preview.mp4" type="video/mp4">
                 </video>
                 <p>
                     <span>Lot People: Episode 2</span>
@@ -35,7 +65,7 @@
 
             <a href="video.html?video=2" class="video-item">
                 <video class="home-video" autoplay muted loop playsinline>
-                    <source src="video1-preview.mp4" type="video/mp4">
+                    <source src="video2-preview.mp4" type="video/mp4">
                 </video>
                 <p>
                     <span>Lot People: Episode 1</span>
@@ -60,8 +90,8 @@
                     <source src="video4-preview.mp4" type="video/mp4">
                 </video>
                 <p>
-                    <span>Roadrunner</span>
-                    <span>Jake Richards &amp; Lulu Erkeneff (Featured)</span>
+                    <span>Roadrunner (Featured)</span>
+                    <span>Jake Richards &amp; Lulu Erkeneff</span>
                     <span>2026</span>
                 </p>
             </a>
@@ -110,7 +140,8 @@
                 </p>
             </a>
 
-        </div>
+        </section>
+
     </main>
 
 </body>
