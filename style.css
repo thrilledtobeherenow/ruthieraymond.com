@@ -56,12 +56,10 @@ header {
     position: sticky;
     top: 0;
     height: calc(100vh - 84px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: auto 1fr;
     min-width: 0;
 }
-
 .featured-video {
     width: 100%;
     position: relative;
@@ -104,9 +102,11 @@ header {
 /* ABOUT TEXT AT BOTTOM LEFT */
 
 .about-callout {
-    margin-top: 20px;
+    align-self: center;
+    margin: 0;
     font-size: 13px;
     line-height: 1.35;
+    text-align: left;
 }
 
 .about-callout p {
