@@ -182,10 +182,11 @@ header {
 .single-video-title {
     width: 80vw;
     max-width: 1200px;
-    margin-top: 15px;
-    text-align: center;
-    font-size: 24px;
+    margin: 10px 0 0;
+    text-align: left;
+    font-size: 13px;
     line-height: 1.35;
+    font-weight: normal;
 }
 
 .single-video-title span {
@@ -194,9 +195,12 @@ header {
 
 .original-video-link {
     display: block;
-    margin-top: 12px;
+    width: 80vw;
+    max-width: 1200px;
+    margin-top: 8px;
     color: black;
     font-size: 13px;
+    text-align: left;
     text-decoration: underline;
 }
 
