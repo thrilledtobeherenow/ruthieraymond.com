@@ -1,4 +1,8 @@
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +14,8 @@ body {
 /* HEADER */
 
 header {
-    padding: 18px 2.7vw;
+    height: 60px;
+    padding: 0 2.7vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,22 +39,23 @@ header {
     font-size: 14px;
 }
 
-/* HOMEPAGE TWO-COLUMN LAYOUT */
+/* HOMEPAGE LAYOUT */
 
 .homepage-layout {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
     gap: 13px;
-    padding: 24px 2.7vw 40px;
+    min-height: calc(100vh - 60px);
+    padding: 24px 2.7vw 0;
     align-items: start;
 }
 
-/* LEFT STICKY COLUMN */
+/* LEFT COLUMN */
 
 .left-column {
     position: sticky;
-    top: 24px;
-    height: calc(100vh - 48px);
+    top: 0;
+    height: calc(100vh - 84px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -95,10 +101,10 @@ header {
     display: block;
 }
 
-/* ABOUT CALLOUT */
+/* ABOUT TEXT AT BOTTOM LEFT */
 
 .about-callout {
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 13px;
     line-height: 1.35;
 }
@@ -144,6 +150,54 @@ header {
     display: block;
 }
 
+/* INDIVIDUAL VIDEO PAGES */
+
+.video-page {
+    margin: 0;
+    min-height: 100vh;
+}
+
+.single-video-page {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 5vw;
+    box-sizing: border-box;
+}
+
+.video-player {
+    width: 80vw;
+    max-width: 1200px;
+}
+
+.single-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+.single-video-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+.single-video-title span {
+    display: block;
+}
+
+.original-video-link {
+    display: block;
+    margin-top: 12px;
+    color: black;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
 /* TABLET */
 
 @media (max-width: 800px) {
@@ -157,8 +211,11 @@ header {
     }
 
     .left-column {
-        top: 20px;
-        height: calc(100vh - 40px);
+        height: calc(100vh - 84px);
+    }
+
+    .video-player {
+        width: 88vw;
     }
 }
 
@@ -166,7 +223,8 @@ header {
 
 @media (max-width: 550px) {
     header {
-        padding: 20px 5vw;
+        height: 60px;
+        padding: 0 5vw;
     }
 
     .site-name {
@@ -183,6 +241,7 @@ header {
 
     .homepage-layout {
         display: block;
+        min-height: auto;
         padding: 25px 5vw 35px;
     }
 
@@ -190,7 +249,7 @@ header {
         position: relative;
         top: auto;
         height: auto;
-        display: block;
+        display: flex;
         margin-bottom: 35px;
     }
 
@@ -207,5 +266,18 @@ header {
     .video-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 22px 12px;
+    }
+
+    .video-player {
+        width: 90vw;
+    }
+
+    .single-video-page {
+        min-height: calc(100vh - 60px);
+        padding: 20px 5vw;
+    }
+
+    .single-video-title {
+        font-size: 15px;
     }
 }
