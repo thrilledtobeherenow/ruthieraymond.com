@@ -12,7 +12,6 @@
     <header>
         <a href="index.html" class="site-name">Ruthie Raymond</a>
         <nav class="header-links">
-            <a href="about.html">About</a>
             <a href="https://www.instagram.com/ruthie___raymond/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:thrilledtobeherenow@gmail.com">Email</a>
         </nav>
@@ -20,7 +19,6 @@
 
     <main class="single-video-page">
         <div id="video-player" class="video-player"></div>
-
         <div id="video-title" class="single-video-title"></div>
 
         <a
@@ -105,6 +103,15 @@
                 ],
                 url: "https://www.instagram.com/reel/DMvVGt3CHwS/",
                 type: "instagram"
+            },
+            9: {
+                lines: [
+                    "Lot People: Episode 3",
+                    "The Seea (Commission)",
+                    "2026"
+                ],
+                url: "https://www.instagram.com/p/DfXi2yzhnlH/",
+                type: "instagram"
             }
         };
 
@@ -124,36 +131,34 @@
                 title.appendChild(span);
             });
 
-            if (selectedVideo.url) {
-                originalLink.href = selectedVideo.url;
+            originalLink.href = selectedVideo.url;
 
             if (selectedVideo.type === "youtube") {
-                    const iframe = document.createElement("iframe");
-                    const videoId = new URL(selectedVideo.url).searchParams.get("v");
+                const iframe = document.createElement("iframe");
+                const videoUrl = new URL(selectedVideo.url);
+                const videoId = videoUrl.searchParams.get("v");
 
-                    iframe.className = "single-video";
-                    iframe.src = "https://www.youtube.com/embed/" +
-                        videoId + "?autoplay=1&mute=1&playsinline=1";
-                    iframe.title = selectedVideo.lines.join(" ");
-                    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
-                    iframe.allowFullscreen = true;
+                iframe.className = "single-video";
+                iframe.src = "https://www.youtube.com/embed/" +
+                    videoId + "?autoplay=1&mute=1&playsinline=1";
+                iframe.title = selectedVideo.lines.join(" ");
+                iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+                iframe.allowFullscreen = true;
 
-                    player.appendChild(iframe);
-                } else if (selectedVideo.type === "instagram") {
-                    const iframe = document.createElement("iframe");
+                player.appendChild(iframe);
 
-                    iframe.className = "single-video";
-                    iframe.src = selectedVideo.url + "embed/";
-                    iframe.title = selectedVideo.lines.join(" ");
-                    iframe.allow = "autoplay; encrypted-media";
-                    iframe.allowFullscreen = true;
+            } else if (selectedVideo.type === "instagram") {
+                const iframe = document.createElement("iframe");
 
-                    player.appendChild(iframe);
-                }
-            } else {
-                player.textContent = "Video link coming soon.";
-                originalLink.style.display = "none";
+                iframe.className = "single-video";
+                iframe.src = selectedVideo.url.replace(/\/$/, "") + "/embed/";
+                iframe.title = selectedVideo.lines.join(" ");
+                iframe.allow = "autoplay; encrypted-media";
+                iframe.allowFullscreen = true;
+
+                player.appendChild(iframe);
             }
+
         } else {
             title.textContent = "Video not found.";
             originalLink.style.display = "none";
